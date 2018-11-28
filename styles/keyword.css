@@ -1,0 +1,18 @@
+#timeline, #articles {
+  padding: 5% 20%;
+}
+
+#keyword {
+  color: #00a;
+}
+
+a.title {
+  display: block;
+  text-decoration: none;
+  margin-top: 1em;
+  color: #00a;
+}
+
+a.title:hover {
+  text-decoration: underline;
+}

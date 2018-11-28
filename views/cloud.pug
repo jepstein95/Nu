@@ -1,0 +1,17 @@
+html
+  head
+    title Nu
+    link(rel='stylesheet' href='/styles/cloud.css')
+
+  body
+    p(id='cloud')
+      each word in Object.keys(count)
+        - var bucket = 0;
+        - var sum = count[word]
+        - if (sum > avg + 3 * std) bucket = 5;
+        - else if (sum > avg + 2 * std) bucket = 4;
+        - else if (sum > avg + std) bucket = 3;
+        - else if (sum > avg) bucket = 2;
+        - else if (sum > avg - std) bucket = 1;
+        if bucket > 0
+          a(class='bucket' + bucket, href='/keyword/' + word)= word

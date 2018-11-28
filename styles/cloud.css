@@ -1,0 +1,69 @@
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+#cloud {
+  margin: 0;
+  padding: 5% 20%;
+  text-align: center;
+}
+
+#cloud > a {
+  margin: 2px;
+  padding: 0 2px;
+  display: inline-block;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.bucket1 {
+  font-size: 16;
+  color: #88a;
+}
+
+.bucket1:hover {
+  color: #fff;
+  background-color: #88a;
+}
+
+.bucket2 {
+  font-size: 20;
+  color: #66a;
+}
+
+.bucket2:hover {
+  color: #fff;
+  background-color: #66a;
+}
+
+.bucket3 {
+  font-size: 28;
+  color: #44a;
+}
+
+.bucket3:hover {
+  color: #fff;
+  background-color: #44a;
+}
+
+.bucket4 {
+  font-size: 44;
+  color: #22a;
+}
+
+.bucket4:hover {
+  color: #fff;
+  background-color: #22a;
+}
+
+.bucket5 {
+  font-size: 76;
+  color: #00a;
+}
+
+.bucket5:hover {
+  color: #fff;
+  background-color: #00a;
+}

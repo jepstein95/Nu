@@ -1,0 +1,24 @@
+html
+  head
+    title Nu
+    link(rel='stylesheet' href='/styles/keyword.css')
+
+body
+  div(id='timeline')
+    h1 Mentions for: #[span(id='keyword') #{keyword}]
+    canvas(id='canvas')
+
+  div(id='articles')
+    each date in Object.keys(collection)
+      h2(id=date)= date
+      each article in collection[date]
+        h3
+          a(class='title', href=article.url, target='_blank')
+            = article.title
+        if (article.description)
+          p= article.description
+
+
+script window.collection = !{JSON.stringify(collection)}
+script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js')
+script(src='/scripts/timeline.js')
