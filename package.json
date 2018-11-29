@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node app.js"
   },
-  "author": "Josh Epstein"",
+  "author": "Josh Epstein",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",

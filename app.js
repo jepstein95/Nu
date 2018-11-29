@@ -281,17 +281,14 @@ app.set('view engine', 'pug');
 app.use('/styles', express.static(__dirname + '/styles'));
 app.use('/scripts', express.static(__dirname + '/scripts'));
 
-function getKeywords() {
-  return getKeywordsByPage(1);
-}
-
-function getKeywordsByPage(page) {
+function getKeywords(category) {
   var keywords = [];
   //return Promise.resolve(obj)
   return news.v2.topHeadlines({
+    country: 'us',
     language: 'en',
-    pageSize: pageSize,
-    page: page
+    category: category,
+    pageSize: pageSize
   }).then(response => {
     _.each(response.articles, article => {
       keywords = keywords.concat(keywordExtractor.extract(article.title, {
@@ -303,9 +300,6 @@ function getKeywordsByPage(page) {
         return_max_ngrams: false
       }));
     });
-    //if (response.totalResults > pageSize) {
-    //  return getKeywordsByPage(page + 1);
-    //}
     return {keywords: keywords};
   }).catch(e => {
     return {
@@ -318,10 +312,6 @@ function getKeywordsByPage(page) {
 }
 
 function getArticles(keyword) {
-  return getArticlesByPage(keyword, 1);
-}
-
-function getArticlesByPage(keyword, page) {
   var collection = {};
   //return Promise.resolve(obj)
   return news.v2.everything({
@@ -339,9 +329,6 @@ function getArticlesByPage(keyword, page) {
         url: article.url
       });
     });
-    //if (response.totalResults > pageSize) {
-    //  return getArticlesByPage(keyword, page + 1);
-    //}
     return {collection: collection};
   }).catch(e => {
     return {
@@ -355,7 +342,12 @@ function getArticlesByPage(keyword, page) {
 
 // TODO: efficiency
 app.get('/', (req, res) => {
-  getKeywords().then((results) => {
+  var categories = ['general', 'business', 'entertainment', 'health', 'sports', 'science', 'technology'];
+  var category = req.query.category;
+
+  if (!category || !category.length || !_.contains(categories, category)) category = 'general';
+
+  getKeywords(category).then((results) => {
     if (results.error) {
       res.send(results.error);
       return;
@@ -381,6 +373,8 @@ app.get('/', (req, res) => {
     var std = Math.sqrt(sum / n);
 
     res.render('cloud', {
+      category: category,
+      categories: categories,
       count: count,
       avg: avg,
       std: std

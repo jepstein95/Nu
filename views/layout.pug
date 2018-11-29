@@ -1,0 +1,26 @@
+html
+  head
+    title Nu
+
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')
+
+    block styles
+      link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/litera/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
+      link(rel='stylesheet', href='/styles/style.css')
+
+body
+  nav(class='navbar fixed-top navbar-expand-lg navbar-light bg-light')
+    a(class='navbar-brand', href='/') Nu
+    block navContent
+
+  div(id='content')
+    block content
+
+  p(id='attribution')
+    a(href='https://newsapi.org', target='_blank') Powered by News API
+
+block scripts

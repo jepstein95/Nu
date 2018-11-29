@@ -1,0 +1,20 @@
+#content {
+  padding: 4em 20% 0 20%;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 400;
+}
+
+p {
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 0.79725rem;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+#attribution {
+  margin-top: 1.2rem;
+  text-align: center;
+}

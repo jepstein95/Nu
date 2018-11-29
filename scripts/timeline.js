@@ -21,13 +21,20 @@ for (var i in labels) {
   else data.push(collection[date].length);
 }
 
-var chart = new Chart(document.getElementById('canvas').getContext('2d'), {
+var canvas = document.getElementById('canvas');
+
+var chart = new Chart(canvas.getContext('2d'), {
   type: 'line',
   data: {
     labels: labels,
     datasets: [{
-      backgroundColor: '#00a',
       data: data,
+      borderColor: '#4582ec',
+      backgroundColor: '#fff',
+      pointRadius: 0,
+      pointHitRadius: 8,
+      pointHoverRadius: 4,
+      pointHoverBackgroundColor: '#4582ec',
       lineTension: 0.2
     }],
   },
@@ -35,6 +42,27 @@ var chart = new Chart(document.getElementById('canvas').getContext('2d'), {
     aspectRatio: 4,
     legend: {
       display: false
+    },
+    scales: {
+      yAxes: [{
+        display: false
+      }],
+    },
+    tooltips: {
+      callbacks: {
+        label: function(tooltipItems, data) {
+          return '';
+        }
+      }
     }
   }
 });
+
+canvas.onclick = function(e) {
+  var elements = chart.getElementsAtEvent(e); 
+  var i = elements[0]._index;
+  var label = labels[i];
+  var rec = document.getElementById(label).getBoundingClientRect();
+  var top = rec.top + window.scrollY;
+  window.scrollTo(0, top - 60);
+};
