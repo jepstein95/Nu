@@ -10,7 +10,7 @@ body {
 }
 
 #cloud > a {
-  margin: 2px;
+  margin: 4px;
   padding: 0 2px;
   display: inline-block;
   text-decoration: none;

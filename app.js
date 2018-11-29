@@ -1,4 +1,5 @@
 const express = require('express');
+const favicon = require('serve-favicon');
 const newsapi = require('newsapi');
 const keywordExtractor = require('keyword-extractor');
 const _ = require('underscore');
@@ -280,6 +281,8 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 app.use('/styles', express.static(__dirname + '/styles'));
 app.use('/scripts', express.static(__dirname + '/scripts'));
+app.use('/images', express.static(__dirname + '/images'));
+app.use(favicon(__dirname + '/images/favicon.ico'));
 
 function getKeywords(category) {
   var keywords = [];
