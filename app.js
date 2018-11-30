@@ -294,7 +294,12 @@ function getKeywords(category) {
     pageSize: pageSize
   }).then(response => {
     _.each(response.articles, article => {
-      keywords = keywords.concat(keywordExtractor.extract(article.title, {
+      var title = article.title;
+      var source = article.source.name;
+      var regex = new RegExp(source, 'g');
+      title = title.split(' - ').slice(0, -1).join(' ');
+      title = title.replace(regex, '');
+      keywords = keywords.concat(keywordExtractor.extract(title, {
         language: 'english',
         remove_digits: true,
         remove_duplicates: false,

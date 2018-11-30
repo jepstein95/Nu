@@ -24,4 +24,4 @@ block append content
       - else if (sum > avg + std) bucket = 2;
       - else if (sum > avg + 0.5 * std) bucket = 1;
       if bucket > 0
-        a(class='bucket' + bucket, href='/keyword/' + word)= word
+        a(class='bucket' + bucket, href='/keyword/' + encodeURIComponent(word))= word
